@@ -282,7 +282,6 @@ public abstract class AbstractSearch {
      * This method is used in order to obtain the shortest path that has been built by the algorithm.
      * @param start the starting Cell
      * @param target the ending Cell
-     * @param path the list that will take the contents of the path
      * @return the path that was generated
      */
     public List<Cell> getShortestPath(Cell start, Cell target){

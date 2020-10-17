@@ -1,20 +1,18 @@
 package Visualizer;
 
 import Grid.*;
+import Grid.Cell;
 import Heuristic.*;
 import SearchAlgos.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
-import javafx.scene.control.TextArea;
 
 import java.util.List;
 import java.util.Set;
@@ -71,7 +69,22 @@ public class Controller {
     public ToggleGroup HeuristicGroup;
 
     @FXML
+    public Toggle ManhattanDistanceRadioButton;
+
+    @FXML
+    public Toggle EuclideanDistanceRadioButton;
+
+    @FXML
+    public Toggle ManhattanDistanceByFourRadioButton;
+
+    @FXML
+    public Toggle EuclideanDistanceByFourRadioButton;
+
+    @FXML
     public Button runAStar;
+
+    @FXML
+    public Button runUniformCostSearch;
 
 
 
@@ -95,17 +108,19 @@ public class Controller {
 
         this.gridPane = gridPane;
         this.grid = new Grid();
-        colorGridBeforePath();
+        colorGridBeforePath(grid);
     }
 
 
 
-    public void colorGridBeforePath() {
+    public void colorGridBeforePath(Grid gridToColor) {
+        TextOutput.appendText("\n\nStart Cell: ("+gridToColor.getStartCell()[0][0]+" , "+gridToColor.getStartCell()[0][1]+")\n");
+        TextOutput.appendText("End Cell: ("+gridToColor.getEndCell()[0][0]+" , "+gridToColor.getEndCell()[0][1]+")");
         this.gridPane.getChildren().clear();
 
         Rectangle rect;
         Color color = Color.BLACK;
-        Cell[][] arr = grid.getGrid();
+        Cell[][] arr = gridToColor.getGrid();
 
         for (int r = 1; r <= 120; r++) {
             for (int c = 1; c <= 160; c++) {
@@ -134,7 +149,6 @@ public class Controller {
 
 
                 rect = new Rectangle(6, 6, color);
-                addClick(rect, c, r);
                 this.displayRect[r - 1][c - 1] = rect;
                 gridPane.add(rect, c, r);
             }
@@ -142,30 +156,133 @@ public class Controller {
     }
 
 
-    private void addClick(Rectangle rect, int c, int r) {
-        // nothing for now
+    private void addClick(Rectangle rect, int c, int r, List<Cell> path, Set<Cell> explored) {
+
+        rect.setOnMouseClicked(e -> {
+            int realc = c-1;
+            int realr = r-1;
+            Cell curCell = grid.getGrid()[realr][realc];
+            if (path.contains(curCell) || explored.contains(curCell)) {
+                TextOutput.appendText("\n\nCell ["+realr+"]["+realc+"] clicked.\n");
+                TextOutput.appendText("G-Cost: " + curCell.getgCost() + "\n");
+                TextOutput.appendText("H-Cost: " + curCell.gethCost() + "\n");
+                TextOutput.appendText("F-Cost: " + curCell.getfCost());
+            } else {
+                TextOutput.appendText("\n\nCell ["+realr+"]["+realc+"] clicked.\n");
+                TextOutput.appendText("CELL HAS NOT BEEN VISITED \nAND IS NOT PART OF THE SHORTEST PATH.");
+            }
+        });
     }
 
 
 
     public void runAStarClicked() {
-        EuclideanDistance heu = new EuclideanDistance(grid);
-        AStarSearch a = new AStarSearch(grid,heu);
-        a.run();
-        List<Cell> path = a.getPath();
-        Set<Cell> explored = a.getExploredCells();
-        colorGridAfterPath(path, explored);
+        TextOutput.appendText("\n\nRunning A Star Search ...");
+        if (ManhattanDistanceRadioButton.isSelected()) {
+            manhattanDistance = new ManhattanDistance(this.grid);
+            aStarSearch = new AStarSearch(grid,manhattanDistance);
+            aStarSearch.run();
+            List<Cell> path = aStarSearch.getPath();
+            Set<Cell> explored = aStarSearch.getExploredCells();
+            if (path == null) {
+                TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+            } else {
+                TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                colorGridAfterPath(grid,path, explored);
+            }
+        } else if (EuclideanDistanceRadioButton.isSelected()) {
+            euclideanDistance = new EuclideanDistance(this.grid);
+            aStarSearch = new AStarSearch(grid,euclideanDistance);
+            aStarSearch.run();
+            List<Cell> path = aStarSearch.getPath();
+            Set<Cell> explored = aStarSearch.getExploredCells();
+            if (path == null) {
+                TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+            } else {
+                TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                colorGridAfterPath(grid,path, explored);
+            }
+        } else if (ManhattanDistanceByFourRadioButton.isSelected()) {
+            manhattanDistanceByFour = new ManhattanDistanceByFour(this.grid);
+            aStarSearch = new AStarSearch(grid,manhattanDistanceByFour);
+            aStarSearch.run();
+            List<Cell> path = aStarSearch.getPath();
+            Set<Cell> explored = aStarSearch.getExploredCells();
+            if (path == null) {
+                TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+            } else {
+                TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                colorGridAfterPath(grid,path, explored);
+            }
+        } else if (EuclideanDistanceByFourRadioButton.isSelected()) {
+            euclideanDistanceByFour = new EuclideanDistanceByFour(this.grid);
+            aStarSearch = new AStarSearch(grid,euclideanDistanceByFour);
+            aStarSearch.run();
+            List<Cell> path = aStarSearch.getPath();
+            Set<Cell> explored = aStarSearch.getExploredCells();
+            if (path == null) {
+                TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+            } else {
+                TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                colorGridAfterPath(grid,path, explored);
+            }
+        } else {
+            chebyshev = new Chebyshev(this.grid);
+            aStarSearch = new AStarSearch(grid,chebyshev);
+            aStarSearch.run();
+            List<Cell> path = aStarSearch.getPath();
+            Set<Cell> explored = aStarSearch.getExploredCells();
+            if (path == null) {
+                TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+            } else {
+                TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                colorGridAfterPath(grid,path, explored);
+            }
+        }
+    }
+
+    public void runUniformCostSearchButtonClicked() {
+        TextOutput.appendText("\n\nRunning Uniform Cost Search ...");
+        uniformCostSearch = new UniformCostSearch(this.grid);
+        uniformCostSearch.run();
+        List<Cell> path = uniformCostSearch.getPath();
+        Set<Cell> explored = uniformCostSearch.getExploredCells();
+        if (path == null) {
+            TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+        } else {
+            TextOutput.appendText("\nPATH FOUND!");
+            TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+            TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+            TextOutput.appendText("\nCost of the path: " + uniformCostSearch.getPathCost());
+            colorGridAfterPath(grid,path, explored);
+        }
     }
 
 
 
-    public void colorGridAfterPath(List<Cell> path, Set<Cell> explored) {
+
+
+    public void colorGridAfterPath(Grid gridToColor, List<Cell> path, Set<Cell> explored) {
         gridPane.getChildren().clear();
 
         Rectangle rect;
-        Cell cell;
         Color color = Color.BLACK;
-        Cell[][] arr = grid.getGrid();
+        Cell[][] arr = gridToColor.getGrid();
 
         for (int r = 1; r <= 120; r++) {
             for (int c = 1; c <= 160; c++) {
@@ -189,7 +306,7 @@ public class Controller {
                 }
 
                 rect = new Rectangle(6, 6, color);
-                //addClick(rect, c, r);
+                addClick(rect, c, r,path,explored);
                 this.displayRect[r - 1][c - 1] = rect;
                 gridPane.add(rect, c, r);
             }
@@ -198,9 +315,9 @@ public class Controller {
 
 
     public void generateNewGridButtonClicked() {
-        this.grid = new Grid();
+        grid = new Grid();
         grid.generateEntireGrid();
-        colorGridBeforePath();
+        colorGridBeforePath(grid);
     }
 
     public void loadSavedGridButtonClicked() {
@@ -210,7 +327,7 @@ public class Controller {
         if(file != null) {
             grid = new Grid();
             grid.importGrid(file);
-            colorGridBeforePath();
+            colorGridBeforePath(grid);
         }
     }
 

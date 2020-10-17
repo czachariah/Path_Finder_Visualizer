@@ -65,7 +65,7 @@
 
 
 
-      <RadioButton id="ManhattanDistanceRadioButton" fx:id="ManhattanDistanceRadioButton" layoutX="1300.0" layoutY="289.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Manhattan Distance">
+      <RadioButton id="ManhattanDistanceRadioButton" fx:id="ManhattanDistanceRadioButton" layoutX="1300.0" layoutY="289.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" selected="true" text="Manhattan Distance">
          <font>
             <Font size="18.0" />
          </font>
@@ -100,7 +100,7 @@
 
 
 
-      <RadioButton id="EclideanDistanceByFourRadioButton" fx:id="EclideanDistanceByFourRadioButton" layoutX="1535.0" layoutY="355.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="193.0" text="Euclidean Distance &#10;By Four" toggleGroup="$HeuristicGroup">
+      <RadioButton id="EuclideanDistanceByFourRadioButton" fx:id="EuclideanDistanceByFourRadioButton" layoutX="1535.0" layoutY="355.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="193.0" text="Euclidean Distance &#10;By Four" toggleGroup="$HeuristicGroup">
          <font>
             <Font size="18.0" />
          </font>
@@ -144,7 +144,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="runUniformCostSearch" fx:id="runUniformCostSearch" layoutX="1572.0" layoutY="461.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="186.0" text="Uniform Cost Search">
+      <Button id="runUniformCostSearch" fx:id="runUniformCostSearch" layoutX="1572.0" layoutY="461.0" mnemonicParsing="false" onAction="#runUniformCostSearchButtonClicked" prefHeight="53.0" prefWidth="186.0" text="Uniform Cost Search">
          <font>
             <Font size="18.0" />
          </font>
@@ -185,7 +185,7 @@
          </font>
       </TextField>
       <Separator layoutX="1293.0" layoutY="707.0" prefHeight="12.0" prefWidth="503.0" />
-      <TextArea id="TextOutput" fx:id="TextOutput" editable="false" layoutX="1300.0" layoutY="724.0" prefHeight="239.0" prefWidth="493.0" text="WELCOME TO PATH FINDER VISUALIZER !">
+      <TextArea id="TextOutput" fx:id="TextOutput" editable="false" layoutX="1300.0" layoutY="724.0" prefHeight="239.0" prefWidth="493.0" text="WELCOME TO PATH FINDER VISUALIZER !&#10;How to Read Grid:&#10;Green&#9;&#9;=  &#9;Easy-To-Traverse Cell&#10;Beige&#9;&#9;= &#9;Hard-To-Traverse Cell&#10;Black&#9;&#9;=&#9;Blocked Cell&#10;Light Blue&#9;=&#9;Easy-To-Traverse River&#10;Dark Blue&#9;=&#9;Hard-To-Traverse River&#10;Red&#9;&#9;=&#9;Start/End Cell OR Path Found&#10;Orange&#9;&#9;=&#9;Visited Cells">
          <font>
             <Font size="18.0" />
          </font></TextArea>
