@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="975.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visualizer.Controller">
+   <children>
+      <GridPane id="gridPane" fx:id="gridPane">
+            </GridPane>
+      <Separator halignment="RIGHT" layoutX="1339.0" orientation="VERTICAL" prefHeight="975.0" prefWidth="15.0" />
+      <Button id="runAStar" fx:id="runAStar" layoutX="1406.0" layoutY="33.0" mnemonicParsing="false" onAction="#runAStarClicked" prefHeight="66.0" prefWidth="187.0" text="Run A*" />
+   </children>
+</Pane>
