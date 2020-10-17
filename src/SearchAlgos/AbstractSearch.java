@@ -254,14 +254,20 @@ public abstract class AbstractSearch {
                 float gCostCurrToNeighbor = curr.getgCost() + getGCost(curr, c);
                 if (!exploredCells.contains(c)) {
                     if (!fringe.contains(c)) { // not explored yet and isn't on the fringe
-                        addToFringe(c, curr, gCostCurrToNeighbor, getHCost(c));
-                    } else {
+                        if (gCostCurrToNeighbor < c.getgCost()) {
+                            addToFringe(c, curr, gCostCurrToNeighbor, getHCost(c)); // will do the update (remove and insert with new info) if necessary
+                        }
+                        //addToFringe(c, curr, gCostCurrToNeighbor, getHCost(c));
+                    }
+                    /*
+                    else {
                         // already on the fringe, but if the neighbor seems to be a better/cheap path going through this current cell, 
                         // replace the gCost of this neightbor and update the fringe with it
                         if (gCostCurrToNeighbor < c.getgCost()) {
                             addToFringe(c, curr, gCostCurrToNeighbor, getHCost(c)); // will do the update (remove and insert with new info) if necessary
                         }
-                    } 
+                    }
+                    */
                 }
             }
         } // ends the while loop
@@ -310,7 +316,7 @@ public abstract class AbstractSearch {
             fringe.remove(cur);
         }
         fringe.add(cur);
-        exploredCells.add(cur);
+        //exploredCells.add(cur);
         
     } // ends the addToFringe() method 
 

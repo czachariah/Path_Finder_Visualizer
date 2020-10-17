@@ -2,12 +2,96 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="975.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visualizer.Controller">
    <children>
       <GridPane id="gridPane" fx:id="gridPane">
             </GridPane>
       <Separator halignment="RIGHT" layoutX="1339.0" orientation="VERTICAL" prefHeight="975.0" prefWidth="15.0" />
-      <Button id="runAStar" fx:id="runAStar" layoutX="1406.0" layoutY="33.0" mnemonicParsing="false" onAction="#runAStarClicked" prefHeight="66.0" prefWidth="187.0" text="Run A*" />
+
+      <Button id="runAStar" fx:id="runAStar" layoutX="1387.0" layoutY="506.0" mnemonicParsing="false" onAction="#runAStarClicked" prefHeight="43.0" prefWidth="118.0" text="Run A*">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+
+      <Button id="generateNewGridButton" fx:id="generateNewGridButton" layoutX="1378.0" layoutY="52.0" mnemonicParsing="false" onAction="#generateNewGridButtonClicked" prefHeight="53.0" prefWidth="144.0" text="Generate New Grid">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+
+      <Button id="loadSavedGridButton" fx:id="loadSavedGridButton" layoutX="1642.0" layoutY="52.0" mnemonicParsing="false" onAction="#loadSavedGridButtonClicked" prefHeight="53.0" prefWidth="144.0" text="Load Saved Grid">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+
+      <Label alignment="CENTER" layoutX="1559.0" layoutY="66.0" prefHeight="26.0" prefWidth="39.0" text="OR" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+
+      <Button id="saveNewGridButton" fx:id="saveNewGridButton" layoutX="1378.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveNewGridButtonClicked" prefHeight="53.0" prefWidth="144.0" text="Save New Grid">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+
+      <Separator layoutX="1351.0" layoutY="120.0" prefHeight="12.0" prefWidth="452.0" />
+      <TextField id="saveNewGridName" fx:id="saveNewGridName" layoutX="1578.0" layoutY="209.0" prefHeight="33.0" prefWidth="200.0" text="NEW_GRID.txt">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <Label alignment="CENTER" layoutX="1582.0" layoutY="174.0" prefHeight="26.0" prefWidth="193.0" text="New Grid Name: (.txt)">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="1351.0" layoutY="287.0" prefHeight="12.0" prefWidth="452.0" />
+      <RadioButton layoutX="1384.0" layoutY="328.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" text="Manhattan Distance">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Label layoutX="1378.0" layoutY="299.0" prefHeight="29.0" prefWidth="193.0" text="Choose Heuristics:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="1384.0" layoutY="363.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" text="Euclidean Distance">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="1587.0" layoutY="346.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="193.0" text="Manhattan Distance By Four">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="1587.0" layoutY="381.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="193.0" text="Euclidean Distance By Four">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="1384.0" layoutY="398.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="154.0" text="Chebyshev Distance">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Separator layoutX="1351.0" layoutY="445.0" prefHeight="12.0" prefWidth="452.0" />
+      <Label layoutX="1378.0" layoutY="145.0" prefHeight="29.0" prefWidth="136.0" text="Save Grid:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1378.0" layoutY="14.0" prefHeight="29.0" prefWidth="136.0" text="Choose Grid:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1378.0" layoutY="457.0" prefHeight="29.0" prefWidth="228.0" text="Run Search Algorithm:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

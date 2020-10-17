@@ -661,6 +661,7 @@ public class Grid {
             reader.close();
             fileToRead.close();
         } catch (IOException e) {
+            System.out.println(e);
             System.out.println("Error importing grid.");
         }
     } // ends the importGrid() method

@@ -5,11 +5,14 @@ import Heuristic.*;
 import SearchAlgos.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
-
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import java.io.File;
 import javafx.scene.control.TextArea;
 import javafx.geometry.*;
 
@@ -19,45 +22,64 @@ import java.util.Set;
 
 public class Controller {
 
-    Grid grid = new Grid();
+    public Grid grid;
+
+    public Rectangle[][] displayRect;
+
+    public FileChooser fileChoose;
+
+    public Stage stage;
 
     @FXML
     public TextArea TextOutput;
 
-    private Rectangle[][] displayRect;
+    @FXML
+    public GridPane gridPane;
 
     @FXML
-    private GridPane gridPane;
+    public Button generateNewGridButton;
+
+    @FXML
+    public Button loadSavedGridButton;
+
+    @FXML
+    public Button saveNewGridButton;
+
+    @FXML
+    public TextField saveNewGridName;
 
     @FXML
     public Button runAStar;
+
+
 
     public Controller() {
         this.displayRect = new Rectangle[120][160];
     } // constructor of the Controller() class
 
-    public void printText() {
-        //Platform.runLater(() -> TextOutput.setText("HELLO"));
 
-    }
 
     @FXML
     private void initialize() {
-        initGridGui(gridPane);
+        initializeGridGUI(gridPane);
     }
 
-    public void initGridGui(GridPane gridPane) {
-        gridPane.setPadding(new Insets(2));
-        gridPane.setHgap(2);
-        gridPane.setVgap(2);
+
+
+    public void initializeGridGUI(GridPane gridPane) {
+        this.gridPane.setPadding(new Insets(2));
+        this.gridPane.setHgap(2);
+        this.gridPane.setVgap(2);
 
         this.gridPane = gridPane;
-        grid.generateEntireGrid();
+        this.grid = new Grid();
         colorGridBeforePath();
     }
 
+
+
     public void colorGridBeforePath() {
-        gridPane.getChildren().clear();
+        this.gridPane.getChildren().clear();
 
         Rectangle rect;
         Cell cell;
@@ -98,18 +120,23 @@ public class Controller {
         }
     }
 
+
     private void addClick(Rectangle rect, int c, int r) {
         // nothing for now
     }
 
+
+
     public void runAStarClicked() {
-        ManhattanDistanceByFour heu = new ManhattanDistanceByFour(grid);
+        EuclideanDistance heu = new EuclideanDistance(grid);
         AStarSearch a = new AStarSearch(grid,heu);
         a.run();
         List<Cell> path = a.getPath();
         Set<Cell> explored = a.getExploredCells();
         colorGridAfterPath(path, explored);
     }
+
+
 
     public void colorGridAfterPath(List<Cell> path, Set<Cell> explored) {
         gridPane.getChildren().clear();
@@ -145,6 +172,35 @@ public class Controller {
                 this.displayRect[r - 1][c - 1] = rect;
                 gridPane.add(rect, c, r);
             }
+        }
+    }
+
+
+    public void generateNewGridButtonClicked() {
+        this.grid = new Grid();
+        grid.generateEntireGrid();
+        colorGridBeforePath();
+    }
+
+    public void loadSavedGridButtonClicked() {
+        fileChoose = new FileChooser();
+        fileChoose.setInitialDirectory(new File("./src/SavedGrids/"));
+        File file = fileChoose.showOpenDialog(stage);
+        if(file != null) {
+            grid = new Grid();
+            grid.importGrid(file);
+            colorGridBeforePath();
+        }
+    }
+
+    public void saveNewGridButtonClicked() {
+        String pathToDirectory = "./src/SavedGrids/";
+        String newFileName = saveNewGridName.getText();
+        pathToDirectory += newFileName;
+        System.out.println(pathToDirectory);
+        File file = new File(pathToDirectory);
+        if(file != null) {
+            grid.saveGrid(file);
         }
     }
 
