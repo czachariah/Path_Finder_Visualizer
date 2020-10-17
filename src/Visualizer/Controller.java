@@ -6,6 +6,7 @@ import SearchAlgos.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -14,7 +15,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import javafx.scene.control.TextArea;
-import javafx.geometry.*;
 
 import java.util.List;
 import java.util.Set;
@@ -22,12 +22,31 @@ import java.util.Set;
 
 public class Controller {
 
+    // Grid and Cell global variables
     public Grid grid;
+    public Cell cell;
 
+    // global heuristic variables
+    public ManhattanDistance manhattanDistance;
+    public ManhattanDistanceByFour manhattanDistanceByFour;
+    public EuclideanDistance euclideanDistance;
+    public EuclideanDistanceByFour euclideanDistanceByFour;
+    public Chebyshev chebyshev;
+
+    // global Search variables
+    public AStarSearch aStarSearch;
+    public WeightedAStarSearch weightedAStarSearch;
+    public UniformCostSearch uniformCostSearch;
+    public SequentialAStarSearch sequentialAStarSearch;
+
+    // global weights
+    public float weightForWeightedAStar;
+    public float weight1ForSequentialSearch;
+    public float weight2ForSequentialSearch;
+
+    // other global variables
     public Rectangle[][] displayRect;
-
     public FileChooser fileChoose;
-
     public Stage stage;
 
     @FXML
@@ -47,6 +66,9 @@ public class Controller {
 
     @FXML
     public TextField saveNewGridName;
+
+    @FXML
+    public ToggleGroup HeuristicGroup;
 
     @FXML
     public Button runAStar;
@@ -82,7 +104,6 @@ public class Controller {
         this.gridPane.getChildren().clear();
 
         Rectangle rect;
-        Cell cell;
         Color color = Color.BLACK;
         Cell[][] arr = grid.getGrid();
 
