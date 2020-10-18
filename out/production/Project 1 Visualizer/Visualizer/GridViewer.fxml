@@ -149,7 +149,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="runSequentialHeuristicSearch" fx:id="runSequentialHeuristicSearch" layoutX="1307.0" layoutY="613.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="186.0" text="Sequential Heuristic &#10;Search" textAlignment="CENTER">
+      <Button id="runSequentialHeuristicSearch" fx:id="runSequentialHeuristicSearch" layoutX="1307.0" layoutY="613.0" mnemonicParsing="false" onAction="#runSequentialHeuristicSearchButtonClicked" prefHeight="63.0" prefWidth="186.0" text="Sequential Heuristic &#10;Search" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>

@@ -37,11 +37,6 @@ public class Controller {
     public UniformCostSearch uniformCostSearch;
     public SequentialAStarSearch sequentialAStarSearch;
 
-    // global weights
-    public float weightForWeightedAStar;
-    public float weight1ForSequentialSearch;
-    public float weight2ForSequentialSearch;
-
     // other global variables
     public Rectangle[][] displayRect;
     public FileChooser fileChoose;
@@ -91,6 +86,15 @@ public class Controller {
 
     @FXML
     public TextField weightedAStarWeight;
+
+    @FXML
+    public Button runSequentialHeuristicSearch;
+
+    @FXML
+    public TextField sequentialSearchWeight1;
+
+    @FXML
+    public TextField sequentialSearchWeight2;
 
 
 
@@ -170,11 +174,33 @@ public class Controller {
             Cell curCell = grid.getGrid()[realr][realc];
             if (path.contains(curCell) || explored.contains(curCell)) {
                 TextOutput.appendText("\n\nCell ["+realr+"]["+realc+"] clicked.\n");
+                if (curCell.getType() == 0) {
+                    TextOutput.appendText("Type of Cell: Blocked\n");
+                } else if (curCell.getType() == 1) {
+                    TextOutput.appendText("Type of Cell: Easy-To-Traverse\n");
+                } else if (curCell.getType() == 2) {
+                    TextOutput.appendText("Type of Cell: Hard-To-Traverse\n");
+                } else if (curCell.getType() == 3) {
+                    TextOutput.appendText("Type of Cell: Easy-To-Traverse River\n");
+                } else {
+                    TextOutput.appendText("Type of Cell: Easy-To-Traverse River\n");
+                }
                 TextOutput.appendText("G-Cost: " + curCell.getgCost() + "\n");
                 TextOutput.appendText("H-Cost: " + curCell.gethCost() + "\n");
                 TextOutput.appendText("F-Cost: " + curCell.getfCost());
             } else {
                 TextOutput.appendText("\n\nCell ["+realr+"]["+realc+"] clicked.\n");
+                if (curCell.getType() == 0) {
+                    TextOutput.appendText("Type of Cell: Blocked\n");
+                } else if (curCell.getType() == 1) {
+                    TextOutput.appendText("Type of Cell: Easy-To-Traverse\n");
+                } else if (curCell.getType() == 2) {
+                    TextOutput.appendText("Type of Cell: Hard-To-Traverse\n");
+                } else if (curCell.getType() == 3) {
+                    TextOutput.appendText("Type of Cell: Easy-To-Traverse River\n");
+                } else {
+                    TextOutput.appendText("Type of Cell: Easy-To-Traverse River\n");
+                }
                 TextOutput.appendText("CELL HAS NOT BEEN VISITED \nAND IS NOT PART OF THE SHORTEST PATH.");
             }
         });
@@ -183,8 +209,8 @@ public class Controller {
 
 
     public void runAStarClicked() {
-        TextOutput.appendText("\n\nRunning A Star Search ...");
         if (ManhattanDistanceRadioButton.isSelected()) {
+            TextOutput.appendText("\n\nRunning A Star Search w/ Manhattan Distance Heuristic");
             manhattanDistance = new ManhattanDistance(this.grid);
             aStarSearch = new AStarSearch(grid,manhattanDistance);
             aStarSearch.run();
@@ -200,6 +226,7 @@ public class Controller {
                 colorGridAfterPath(grid,path, explored);
             }
         } else if (EuclideanDistanceRadioButton.isSelected()) {
+            TextOutput.appendText("\n\nRunning A Star Search w/ Euclidean Distance Heuristic");
             euclideanDistance = new EuclideanDistance(this.grid);
             aStarSearch = new AStarSearch(grid,euclideanDistance);
             aStarSearch.run();
@@ -215,6 +242,7 @@ public class Controller {
                 colorGridAfterPath(grid,path, explored);
             }
         } else if (ManhattanDistanceByFourRadioButton.isSelected()) {
+            TextOutput.appendText("\n\nRunning A Star Search w/ Manhattan Distance By Four Heuristic");
             manhattanDistanceByFour = new ManhattanDistanceByFour(this.grid);
             aStarSearch = new AStarSearch(grid,manhattanDistanceByFour);
             aStarSearch.run();
@@ -230,6 +258,7 @@ public class Controller {
                 colorGridAfterPath(grid,path, explored);
             }
         } else if (EuclideanDistanceByFourRadioButton.isSelected()) {
+            TextOutput.appendText("\n\nRunning A Star Search w/ Euclidean Distance By Four Heuristic");
             euclideanDistanceByFour = new EuclideanDistanceByFour(this.grid);
             aStarSearch = new AStarSearch(grid,euclideanDistanceByFour);
             aStarSearch.run();
@@ -245,6 +274,7 @@ public class Controller {
                 colorGridAfterPath(grid,path, explored);
             }
         } else {
+            TextOutput.appendText("\n\nRunning A Star Search w/ Chebyshev Distance Heuristic");
             chebyshev = new Chebyshev(this.grid);
             aStarSearch = new AStarSearch(grid,chebyshev);
             aStarSearch.run();
@@ -263,7 +293,7 @@ public class Controller {
     }
 
     public void runUniformCostSearchButtonClicked() {
-        TextOutput.appendText("\n\nRunning Uniform Cost Search ...");
+        TextOutput.appendText("\n\nRunning Uniform Cost Search");
         uniformCostSearch = new UniformCostSearch(this.grid);
         uniformCostSearch.run();
         List<Cell> path = uniformCostSearch.getPath();
@@ -286,11 +316,11 @@ public class Controller {
         try {
             weight = Float.parseFloat(weightedAStarWeight.getText());
         } catch (Exception e) {
-            TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHTS ARE DECIMALS.");
+            TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHT IS A DECIMAL NUMBER.");
         }
         if (weight >= 1) {
-            TextOutput.appendText("\n\nRunning Weighted A Star Search ...");
             if (ManhattanDistanceRadioButton.isSelected()) {
+                TextOutput.appendText("\n\nRunning Weighted A Star Search w/ Manhattan Distance Heuristic w/ weight: " + weight);
                 manhattanDistance = new ManhattanDistance(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,manhattanDistance,weight);
                 weightedAStarSearch.run();
@@ -306,6 +336,7 @@ public class Controller {
                     colorGridAfterPath(grid,path,explored);
                 }
             } else if (EuclideanDistanceRadioButton.isSelected()) {
+                TextOutput.appendText("\n\nRunning Weighted A Star Search w/ Euclidean Distance Heuristic w/ weight: " + weight);
                 euclideanDistance = new EuclideanDistance(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,euclideanDistance,weight);
                 weightedAStarSearch.run();
@@ -321,53 +352,74 @@ public class Controller {
                     colorGridAfterPath(grid,path,explored);
                 }
             } else if (ManhattanDistanceByFourRadioButton.isSelected()) {
+                TextOutput.appendText("\n\nRunning Weighted A Star Search w/ Manhattan Distance By Four Heuristic w/ weight: " + weight);
                 manhattanDistanceByFour = new ManhattanDistanceByFour(this.grid);
-                aStarSearch = new AStarSearch(grid,manhattanDistanceByFour);
-                aStarSearch.run();
-                List<Cell> path = aStarSearch.getPath();
-                Set<Cell> explored = aStarSearch.getExploredCells();
+                weightedAStarSearch = new WeightedAStarSearch(grid,manhattanDistanceByFour,weight);
+                weightedAStarSearch.run();
+                List<Cell> path = weightedAStarSearch.getPath();
+                Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
-                    TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
-                    colorGridAfterPath(grid,path, explored);
+                    TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path,explored);
                 }
             } else if (EuclideanDistanceByFourRadioButton.isSelected()) {
+                TextOutput.appendText("\n\nRunning Weighted A Star Search w/ Euclidean Distance By Four Heuristic w/ weight: " + weight);
                 euclideanDistanceByFour = new EuclideanDistanceByFour(this.grid);
-                aStarSearch = new AStarSearch(grid,euclideanDistanceByFour);
-                aStarSearch.run();
-                List<Cell> path = aStarSearch.getPath();
-                Set<Cell> explored = aStarSearch.getExploredCells();
+                weightedAStarSearch = new WeightedAStarSearch(grid,euclideanDistanceByFour,weight);
+                weightedAStarSearch.run();
+                List<Cell> path = weightedAStarSearch.getPath();
+                Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
-                    TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
-                    colorGridAfterPath(grid,path, explored);
+                    TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path,explored);
                 }
             } else {
+                TextOutput.appendText("\n\nRunning Weighted A Star Search w/ Chebyshev Distance Heuristic w/ weight: " + weight);
                 chebyshev = new Chebyshev(this.grid);
-                aStarSearch = new AStarSearch(grid,chebyshev);
-                aStarSearch.run();
-                List<Cell> path = aStarSearch.getPath();
-                Set<Cell> explored = aStarSearch.getExploredCells();
+                weightedAStarSearch = new WeightedAStarSearch(grid,chebyshev,weight);
+                weightedAStarSearch.run();
+                List<Cell> path = weightedAStarSearch.getPath();
+                Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
-                    TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
-                    colorGridAfterPath(grid,path, explored);
+                    TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path,explored);
                 }
             }
         } else {
-            TextOutput.appendText("\n\nPLEASE USE A WEIGHT >= 1.");
+            TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHT IS >= 1");
+        }
+    }
+
+
+
+    public void runSequentialHeuristicSearchButtonClicked() {
+        float w1 = 0;
+        float w2 = 0;
+        try {
+            w1 = Float.parseFloat(sequentialSearchWeight1.getText());
+            w2 = Float.parseFloat(sequentialSearchWeight2.getText());
+        } catch (Exception e) {
+            TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHTS ARE DECIMAL NUMBERS.");
+        }
+        if (w1 >= 1 && w2>= 1) {
+            
+        } else {
+            TextOutput.appendText("\n\nPLEASE MAKE SURE WEIGHTS ARE >= 1");
         }
     }
 
