@@ -31,6 +31,5 @@ public class EuclideanDistanceByFour extends Heuristic{
      */
     public float getHeuristic(Cell cell) {
         return ( 0.25f * (float) Math.sqrt( ((end_x - cell.getX())*(end_x-cell.getX())) + ((end_y-cell.getY())*(end_y-cell.getY())) ) );
-        //return (float)((0.25)*((Math.sqrt(((end_x-cell.getX())*(end_x-cell.getX())) + ((end_y-cell.getY())*(end_y-cell.getY()))))));
     }
 } // ends the EuclideanDistanceByFour() class

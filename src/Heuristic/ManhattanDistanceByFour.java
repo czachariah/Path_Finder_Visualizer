@@ -31,6 +31,5 @@ public class ManhattanDistanceByFour extends Heuristic {
      */
     public float getHeuristic(Cell cell) {
         return (float) 0.25 * Math.abs(cell.getX()-end_x) + Math.abs(cell.getY()-end_y);
-        //return (float) ((0.25) *  (Math.abs(cell.getX()-end_x) + Math.abs(cell.getY()-end_y)));
     }
 } // ends the ManhattanDistanceByFour() class
