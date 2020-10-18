@@ -86,6 +86,12 @@ public class Controller {
     @FXML
     public Button runUniformCostSearch;
 
+    @FXML
+    public Button runWeightedAStar;
+
+    @FXML
+    public TextField weightedAStarWeight;
+
 
 
     public Controller() {
@@ -273,6 +279,97 @@ public class Controller {
         }
     }
 
+
+
+    public void runWeightedAStarButtonClicked() {
+        float weight = 1;
+        try {
+            weight = Float.parseFloat(weightedAStarWeight.getText());
+        } catch (Exception e) {
+            TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHTS ARE DECIMALS.");
+        }
+        if (weight >= 1) {
+            TextOutput.appendText("\n\nRunning Weighted A Star Search ...");
+            if (ManhattanDistanceRadioButton.isSelected()) {
+                manhattanDistance = new ManhattanDistance(this.grid);
+                weightedAStarSearch = new WeightedAStarSearch(grid,manhattanDistance,weight);
+                weightedAStarSearch.run();
+                List<Cell> path = weightedAStarSearch.getPath();
+                Set<Cell> explored = weightedAStarSearch.getExploredCells();
+                if (path == null) {
+                    TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                } else {
+                    TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path,explored);
+                }
+            } else if (EuclideanDistanceRadioButton.isSelected()) {
+                euclideanDistance = new EuclideanDistance(this.grid);
+                weightedAStarSearch = new WeightedAStarSearch(grid,euclideanDistance,weight);
+                weightedAStarSearch.run();
+                List<Cell> path = weightedAStarSearch.getPath();
+                Set<Cell> explored = weightedAStarSearch.getExploredCells();
+                if (path == null) {
+                    TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                } else {
+                    TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path,explored);
+                }
+            } else if (ManhattanDistanceByFourRadioButton.isSelected()) {
+                manhattanDistanceByFour = new ManhattanDistanceByFour(this.grid);
+                aStarSearch = new AStarSearch(grid,manhattanDistanceByFour);
+                aStarSearch.run();
+                List<Cell> path = aStarSearch.getPath();
+                Set<Cell> explored = aStarSearch.getExploredCells();
+                if (path == null) {
+                    TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                } else {
+                    TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path, explored);
+                }
+            } else if (EuclideanDistanceByFourRadioButton.isSelected()) {
+                euclideanDistanceByFour = new EuclideanDistanceByFour(this.grid);
+                aStarSearch = new AStarSearch(grid,euclideanDistanceByFour);
+                aStarSearch.run();
+                List<Cell> path = aStarSearch.getPath();
+                Set<Cell> explored = aStarSearch.getExploredCells();
+                if (path == null) {
+                    TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                } else {
+                    TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path, explored);
+                }
+            } else {
+                chebyshev = new Chebyshev(this.grid);
+                aStarSearch = new AStarSearch(grid,chebyshev);
+                aStarSearch.run();
+                List<Cell> path = aStarSearch.getPath();
+                Set<Cell> explored = aStarSearch.getExploredCells();
+                if (path == null) {
+                    TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                } else {
+                    TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
+                    colorGridAfterPath(grid,path, explored);
+                }
+            }
+        } else {
+            TextOutput.appendText("\n\nPLEASE USE A WEIGHT >= 1.");
+        }
+    }
 
 
 
