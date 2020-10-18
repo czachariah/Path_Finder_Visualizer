@@ -879,11 +879,3 @@ public class Controller {
         TextOutput.appendText("\n\nSaving grid: " + newFileName + " ...");
     } // ends the saveNewGridButtonClicked() method
 } // ends the Controller Class
-
-/*
-Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText("No heuristic");
-                alert.setContentText("You did not select the heuristic to be used");
-                alert.showAndWait();
- */
