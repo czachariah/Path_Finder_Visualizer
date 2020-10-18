@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -234,13 +236,21 @@ public class Controller {
             TextOutput.appendText("\n\nRunning A Star Search \nw/ Manhattan Distance Heuristic");
             manhattanDistance = new ManhattanDistance(this.grid);
             aStarSearch = new AStarSearch(grid,manhattanDistance);
+            long startTime = System.currentTimeMillis();
             aStarSearch.run();
+            long totalTime = System.currentTimeMillis() - startTime;
             List<Cell> path = aStarSearch.getPath();
             Set<Cell> explored = aStarSearch.getExploredCells();
             if (path == null) {
                 TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("NO PATH FOUND");
+                alert.setHeaderText("Reasons:");
+                alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                alert.showAndWait();
             } else {
                 TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                 TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
@@ -250,13 +260,21 @@ public class Controller {
             TextOutput.appendText("\n\nRunning A Star Search \nw/ Euclidean Distance Heuristic");
             euclideanDistance = new EuclideanDistance(this.grid);
             aStarSearch = new AStarSearch(grid,euclideanDistance);
+            long startTime = System.currentTimeMillis();
             aStarSearch.run();
+            long totalTime = System.currentTimeMillis() - startTime;
             List<Cell> path = aStarSearch.getPath();
             Set<Cell> explored = aStarSearch.getExploredCells();
             if (path == null) {
                 TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("NO PATH FOUND");
+                alert.setHeaderText("Reasons:");
+                alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                alert.showAndWait();
             } else {
                 TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                 TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
@@ -266,13 +284,21 @@ public class Controller {
             TextOutput.appendText("\n\nRunning A Star Search \nw/ Manhattan Distance By Four Heuristic");
             manhattanDistanceByFour = new ManhattanDistanceByFour(this.grid);
             aStarSearch = new AStarSearch(grid,manhattanDistanceByFour);
+            long startTime = System.currentTimeMillis();
             aStarSearch.run();
+            long totalTime = System.currentTimeMillis() - startTime;
             List<Cell> path = aStarSearch.getPath();
             Set<Cell> explored = aStarSearch.getExploredCells();
             if (path == null) {
                 TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("NO PATH FOUND");
+                alert.setHeaderText("Reasons:");
+                alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                alert.showAndWait();
             } else {
                 TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                 TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
@@ -282,13 +308,21 @@ public class Controller {
             TextOutput.appendText("\n\nRunning A Star Search \nw/ Euclidean Distance By Four Heuristic");
             euclideanDistanceByFour = new EuclideanDistanceByFour(this.grid);
             aStarSearch = new AStarSearch(grid,euclideanDistanceByFour);
+            long startTime = System.currentTimeMillis();
             aStarSearch.run();
+            long totalTime = System.currentTimeMillis() - startTime;
             List<Cell> path = aStarSearch.getPath();
             Set<Cell> explored = aStarSearch.getExploredCells();
             if (path == null) {
                 TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("NO PATH FOUND");
+                alert.setHeaderText("Reasons:");
+                alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                alert.showAndWait();
             } else {
                 TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                 TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
@@ -298,13 +332,21 @@ public class Controller {
             TextOutput.appendText("\n\nRunning A Star Search \nw/ Chebyshev Distance Heuristic");
             chebyshev = new Chebyshev(this.grid);
             aStarSearch = new AStarSearch(grid,chebyshev);
+            long startTime = System.currentTimeMillis();
             aStarSearch.run();
+            long totalTime = System.currentTimeMillis() - startTime;
             List<Cell> path = aStarSearch.getPath();
             Set<Cell> explored = aStarSearch.getExploredCells();
             if (path == null) {
                 TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("NO PATH FOUND");
+                alert.setHeaderText("Reasons:");
+                alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                alert.showAndWait();
             } else {
                 TextOutput.appendText("\nPATH FOUND!");
+                TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                 TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
@@ -320,13 +362,21 @@ public class Controller {
     public void runUniformCostSearchButtonClicked() {
         TextOutput.appendText("\n\nRunning Uniform Cost Search");
         uniformCostSearch = new UniformCostSearch(this.grid);
+        long startTime = System.currentTimeMillis();
         uniformCostSearch.run();
+        long totalTime = System.currentTimeMillis() - startTime;
         List<Cell> path = uniformCostSearch.getPath();
         Set<Cell> explored = uniformCostSearch.getExploredCells();
         if (path == null) {
             TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("NO PATH FOUND");
+            alert.setHeaderText("Reasons:");
+            alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+            alert.showAndWait();
         } else {
             TextOutput.appendText("\nPATH FOUND!");
+            TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
             TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
             TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
             TextOutput.appendText("\nCost of the path: " + uniformCostSearch.getPathCost());
@@ -344,19 +394,33 @@ public class Controller {
             weight = Float.parseFloat(weightedAStarWeight.getText());
         } catch (Exception e) {
             TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHT IS A DECIMAL NUMBER.");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("IMPROPER WEIGHT");
+            alert.setHeaderText("Reason:");
+            alert.setContentText("Make sure to use a weight that is a decimal number >= 1.0");
+            alert.showAndWait();
+            return;
         }
         if (weight >= 1) {
             if (ManhattanDistanceRadioButton.isSelected()) {
                 TextOutput.appendText("\n\nRunning Weighted A Star Search \nw/ Manhattan Distance Heuristic \nw/ weight: " + weight);
                 manhattanDistance = new ManhattanDistance(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,manhattanDistance,weight);
+                long startTime = System.currentTimeMillis();
                 weightedAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = weightedAStarSearch.getPath();
                 Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
@@ -366,13 +430,21 @@ public class Controller {
                 TextOutput.appendText("\n\nRunning Weighted A Star Search \nw/ Euclidean Distance Heuristic \nw/ weight: " + weight);
                 euclideanDistance = new EuclideanDistance(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,euclideanDistance,weight);
+                long startTime = System.currentTimeMillis();
                 weightedAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = weightedAStarSearch.getPath();
                 Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
@@ -382,13 +454,21 @@ public class Controller {
                 TextOutput.appendText("\n\nRunning Weighted A Star Search \nw/ Manhattan Distance By Four Heuristic \nw/ weight: " + weight);
                 manhattanDistanceByFour = new ManhattanDistanceByFour(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,manhattanDistanceByFour,weight);
+                long startTime = System.currentTimeMillis();
                 weightedAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = weightedAStarSearch.getPath();
                 Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
@@ -398,13 +478,21 @@ public class Controller {
                 TextOutput.appendText("\n\nRunning Weighted A Star Search \nw/ Euclidean Distance By Four Heuristic \nw/ weight: " + weight);
                 euclideanDistanceByFour = new EuclideanDistanceByFour(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,euclideanDistanceByFour,weight);
+                long startTime = System.currentTimeMillis();
                 weightedAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = weightedAStarSearch.getPath();
                 Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
@@ -414,13 +502,21 @@ public class Controller {
                 TextOutput.appendText("\n\nRunning Weighted A Star Search \nw/ Chebyshev Distance Heuristic \nw/ weight: " + weight);
                 chebyshev = new Chebyshev(this.grid);
                 weightedAStarSearch = new WeightedAStarSearch(grid,chebyshev,weight);
+                long startTime = System.currentTimeMillis();
                 weightedAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = weightedAStarSearch.getPath();
                 Set<Cell> explored = weightedAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
@@ -429,6 +525,11 @@ public class Controller {
             }
         } else {
             TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHT IS >= 1");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("IMPROPER WEIGHT");
+            alert.setHeaderText("Reason:");
+            alert.setContentText("Make sure to use a weight that is a decimal number >= 1.0");
+            alert.showAndWait();
         }
     } // ends the runWeightedAStarButtonClicked() method
 
@@ -444,6 +545,12 @@ public class Controller {
             w2 = Float.parseFloat(sequentialSearchWeight2.getText());
         } catch (Exception e) {
             TextOutput.appendText("\n\nPLEASE MAKE SURE THE WEIGHTS ARE DECIMAL NUMBERS.");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("IMPROPER WEIGHTS");
+            alert.setHeaderText("Reason:");
+            alert.setContentText("Make sure to use weights that are decimal numbers >= 1.0");
+            alert.showAndWait();
+            return;
         }
         if (w1 >= 1 && w2 >= 1) {
             Heuristic[] arr = new Heuristic[5];
@@ -455,13 +562,21 @@ public class Controller {
                 arr[3] = new EuclideanDistanceByFour(this.grid);
                 arr[4] = new Chebyshev(this.grid);
                 sequentialAStarSearch = new SequentialAStarSearch(this.grid,w1,w2,arr);
+                long startTime = System.currentTimeMillis();
                 sequentialAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = sequentialAStarSearch.getPath();
                 HashMap<Cell, Cell[]> exploredCells = sequentialAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
@@ -475,13 +590,21 @@ public class Controller {
                 arr[3] = new EuclideanDistanceByFour(this.grid);
                 arr[4] = new Chebyshev(this.grid);
                 sequentialAStarSearch = new SequentialAStarSearch(this.grid,w1,w2,arr);
+                long startTime = System.currentTimeMillis();
                 sequentialAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = sequentialAStarSearch.getPath();
                 HashMap<Cell, Cell[]> exploredCells = sequentialAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
@@ -495,13 +618,21 @@ public class Controller {
                 arr[3] = new EuclideanDistanceByFour(this.grid);
                 arr[4] = new Chebyshev(this.grid);
                 sequentialAStarSearch = new SequentialAStarSearch(this.grid,w1,w2,arr);
+                long startTime = System.currentTimeMillis();
                 sequentialAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = sequentialAStarSearch.getPath();
                 HashMap<Cell, Cell[]> exploredCells = sequentialAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
@@ -515,13 +646,21 @@ public class Controller {
                 arr[3] = new EuclideanDistance(this.grid);
                 arr[4] = new Chebyshev(this.grid);
                 sequentialAStarSearch = new SequentialAStarSearch(this.grid,w1,w2,arr);
+                long startTime = System.currentTimeMillis();
                 sequentialAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = sequentialAStarSearch.getPath();
                 HashMap<Cell, Cell[]> exploredCells = sequentialAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
@@ -535,13 +674,21 @@ public class Controller {
                 arr[3] = new EuclideanDistance(this.grid);
                 arr[4] = new EuclideanDistanceByFour(this.grid);
                 sequentialAStarSearch = new SequentialAStarSearch(this.grid,w1,w2,arr);
+                long startTime = System.currentTimeMillis();
                 sequentialAStarSearch.run();
+                long totalTime = System.currentTimeMillis() - startTime;
                 List<Cell> path = sequentialAStarSearch.getPath();
                 HashMap<Cell, Cell[]> exploredCells = sequentialAStarSearch.getExploredCells();
                 if (path == null) {
                     TextOutput.appendText("\nNO PATH FOUND or SEARCH WAS DONE ON THIS GRID");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("NO PATH FOUND");
+                    alert.setHeaderText("Reasons:");
+                    alert.setContentText("1) A path could not be formed given the placement of the start and goal points in this specific grid \n2) A search was already completed on this grid and it must be cleared out and run again");
+                    alert.showAndWait();
                 } else {
                     TextOutput.appendText("\nPATH FOUND!");
+                    TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
                     TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
@@ -550,6 +697,11 @@ public class Controller {
             }
         } else {
             TextOutput.appendText("\n\nPLEASE MAKE SURE WEIGHTS ARE >= 1");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("IMPROPER WEIGHTS");
+            alert.setHeaderText("Reason:");
+            alert.setContentText("Make sure to use weights that are decimal numbers >= 1.0");
+            alert.showAndWait();
         }
     } // ends the runSequentialHeuristicSearchButtonClicked() method
 
@@ -727,3 +879,11 @@ public class Controller {
         TextOutput.appendText("\n\nSaving grid: " + newFileName + " ...");
     } // ends the saveNewGridButtonClicked() method
 } // ends the Controller Class
+
+/*
+Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("No heuristic");
+                alert.setContentText("You did not select the heuristic to be used");
+                alert.showAndWait();
+ */
