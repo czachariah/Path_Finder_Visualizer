@@ -252,7 +252,7 @@ public class Controller {
                 TextOutput.appendText("\nPATH FOUND!");
                 TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
                 colorGridAfterPath(grid,path, explored);
             }
@@ -276,7 +276,7 @@ public class Controller {
                 TextOutput.appendText("\nPATH FOUND!");
                 TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
                 colorGridAfterPath(grid,path, explored);
             }
@@ -300,7 +300,7 @@ public class Controller {
                 TextOutput.appendText("\nPATH FOUND!");
                 TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
                 colorGridAfterPath(grid,path, explored);
             }
@@ -324,7 +324,7 @@ public class Controller {
                 TextOutput.appendText("\nPATH FOUND!");
                 TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
                 colorGridAfterPath(grid,path, explored);
             }
@@ -348,7 +348,7 @@ public class Controller {
                 TextOutput.appendText("\nPATH FOUND!");
                 TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                 TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                 TextOutput.appendText("\nCost of the path: " + aStarSearch.getPathCost());
                 colorGridAfterPath(grid,path, explored);
             }
@@ -378,7 +378,7 @@ public class Controller {
             TextOutput.appendText("\nPATH FOUND!");
             TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
             TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-            TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+            TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
             TextOutput.appendText("\nCost of the path: " + uniformCostSearch.getPathCost());
             colorGridAfterPath(grid,path, explored);
         }
@@ -422,7 +422,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
                     colorGridAfterPath(grid,path,explored);
                 }
@@ -446,7 +446,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
                     colorGridAfterPath(grid,path,explored);
                 }
@@ -470,7 +470,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
                     colorGridAfterPath(grid,path,explored);
                 }
@@ -494,7 +494,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
                     colorGridAfterPath(grid,path,explored);
                 }
@@ -518,7 +518,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + explored.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + weightedAStarSearch.getPathCost());
                     colorGridAfterPath(grid,path,explored);
                 }
@@ -578,7 +578,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
                     colorSequentialGridAfterPath(grid,path,exploredCells);
                 }
@@ -606,7 +606,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
                     colorSequentialGridAfterPath(grid,path,exploredCells);
                 }
@@ -634,7 +634,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
                     colorSequentialGridAfterPath(grid,path,exploredCells);
                 }
@@ -662,7 +662,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
                     colorSequentialGridAfterPath(grid,path,exploredCells);
                 }
@@ -690,7 +690,7 @@ public class Controller {
                     TextOutput.appendText("\nPATH FOUND!");
                     TextOutput.appendText("\nRun time: " + totalTime + " milliseconds");
                     TextOutput.appendText("\nLength of the path: " + path.size() + " cells.");
-                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + "cells");
+                    TextOutput.appendText("\nNumber of cells visited: " + exploredCells.size() + " cells");
                     TextOutput.appendText("\nCost of the path: " + sequentialAStarSearch.getPathCost());
                     colorSequentialGridAfterPath(grid,path,exploredCells);
                 }
