@@ -871,7 +871,6 @@ public class Controller {
         String pathToDirectory = "./src/SavedGrids/";
         String newFileName = saveNewGridName.getText();
         pathToDirectory += newFileName;
-        System.out.println(pathToDirectory);
         File file = new File(pathToDirectory);
         if(file != null) {
             grid.saveGrid(file);
